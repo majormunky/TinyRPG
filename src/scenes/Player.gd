@@ -1,17 +1,30 @@
 extends CharacterBody2D
 
-var speed = 250
+var speed = 200
+
+@onready var animation_player = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var animation_state = animation_tree.get("parameters/playback")
+
 
 func _physics_process(delta):
 	var input = Vector2.ZERO
 	
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
+	input.y = Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
 	input = input.normalized()
 	
 	if input != Vector2.ZERO:
+		animation_tree.set("parameters/Idle/blend_position", input);
+		animation_tree.set("parameters/Walk/blend_position", input);
+		# animation_state.travel("Walk")
+		animation_tree["parameters/conditions/is_idle"] = false
+		animation_tree["parameters/conditions/is_moving"] = true
 		velocity = input * speed * delta
 	else:
+		#animation_state.travel("Idle")
+		animation_tree["parameters/conditions/is_idle"] = true
+		animation_tree["parameters/conditions/is_moving"] = false
 		velocity = Vector2.ZERO
 
 	move_and_collide(velocity)
