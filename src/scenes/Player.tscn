@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://harceuo4vu7x"]
+[gd_scene load_steps=4 format=3 uid="uid://harceuo4vu7x"]
 
 [ext_resource type="Texture2D" uid="uid://x1sbv56lwyei" path="res://assets/characters/Warrior_M3.png" id="1_krhs0"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="1_xq6xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqo17"]
 size = Vector2(28, 22)
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xq6xq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_krhs0")
