@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://harceuo4vu7x"]
+
+[ext_resource type="Texture2D" uid="uid://x1sbv56lwyei" path="res://assets/characters/Warrior_M3.png" id="1_krhs0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqo17"]
+size = Vector2(28, 22)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_krhs0")
+hframes = 3
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_eqo17")

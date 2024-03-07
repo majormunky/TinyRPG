@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="TinyRPG"
+run/main_scene="res://scenes/Game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=800
+window/size/resizable=false
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
