@@ -5,6 +5,7 @@ var speed = 200
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
+signal teleporter_hit(name)
 
 
 func _physics_process(delta):
@@ -28,3 +29,8 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 
 	move_and_collide(velocity)
+
+
+func _on_body_box_area_entered(area):
+	print("Teleporter Hit ", area.name)
+	emit_signal("teleporter_hit", area.name)
