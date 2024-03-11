@@ -4,7 +4,8 @@ signal map_loaded(map_name)
 
 var map_data = {
 	"House1": preload("res://scenes/Maps/House1.tscn"),
-	"WorldMap": preload("res://scenes/Maps/WorldMap.tscn")
+	"WorldMap": preload("res://scenes/Maps/WorldMap.tscn"),
+	"FirstTown": preload("res://scenes/Maps/FirstTown.tscn")
 }
 var current_map = null
 var previous_map_name = null
