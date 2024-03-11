@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1xd48a210722"]
+[gd_scene load_steps=9 format=3 uid="uid://b1xd48a210722"]
 
 [ext_resource type="Script" path="res://scenes/Game.gd" id="1_qf4lp"]
 [ext_resource type="PackedScene" uid="uid://harceuo4vu7x" path="res://scenes/Player.tscn" id="1_xy0tq"]
 [ext_resource type="Script" path="res://scenes/WorldManager.gd" id="2_mkyx7"]
+[ext_resource type="Script" path="res://scenes/Menu/UI.gd" id="4_yhcvy"]
+[ext_resource type="Script" path="res://scenes/Menu/SideBar.gd" id="5_20pyn"]
+[ext_resource type="Script" path="res://scenes/Menu/GameMenu.gd" id="5_ctwft"]
+[ext_resource type="Texture2D" uid="uid://bnx4x8q8swyv6" path="res://assets/ui/panel.png" id="5_ky5jw"]
+[ext_resource type="Theme" uid="uid://cf5rhasrgjan2" path="res://scenes/Menu/MenuTheme.tres" id="5_l7x7j"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qf4lp")
@@ -13,5 +18,122 @@ script = ExtResource("2_mkyx7")
 [node name="Player" parent="." instance=ExtResource("1_xy0tq")]
 position = Vector2(2786, 1608)
 
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("4_yhcvy")
+
+[node name="GameMenu" type="MarginContainer" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_l7x7j")
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+script = ExtResource("5_ctwft")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/GameMenu"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/GameMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ky5jw")
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 64, 64)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/GameMenu/HBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+
+[node name="SideBar" type="VBoxContainer" parent="UI/GameMenu/HBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+script = ExtResource("5_20pyn")
+
+[node name="Status" type="Label" parent="UI/GameMenu/HBoxContainer/NinePatchRect/MarginContainer/SideBar"]
+layout_mode = 2
+text = "> Status"
+
+[node name="Inventory" type="Label" parent="UI/GameMenu/HBoxContainer/NinePatchRect/MarginContainer/SideBar"]
+layout_mode = 2
+text = "  Inventory"
+
+[node name="Magic" type="Label" parent="UI/GameMenu/HBoxContainer/NinePatchRect/MarginContainer/SideBar"]
+layout_mode = 2
+text = "  Magic"
+
+[node name="Main" type="NinePatchRect" parent="UI/GameMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+texture = ExtResource("5_ky5jw")
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 64, 64)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/GameMenu/HBoxContainer/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Status" type="VBoxContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer/Status"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+
+[node name="Label" type="Label" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer/Status/MarginContainer"]
+layout_mode = 2
+text = "Status"
+
+[node name="Inventory" type="VBoxContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer/Inventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+
+[node name="Label" type="Label" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer/Inventory/MarginContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Magic" type="VBoxContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer/Magic"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+
+[node name="Label" type="Label" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer/Magic/MarginContainer"]
+layout_mode = 2
+text = "Magic"
+
 [connection signal="map_loaded" from="WorldManager" to="." method="_on_world_manager_map_loaded"]
 [connection signal="teleporter_hit" from="Player" to="." method="_on_player_teleporter_hit"]
+[connection signal="menu_changed" from="UI/GameMenu/HBoxContainer/NinePatchRect/MarginContainer/SideBar" to="UI/GameMenu" method="_on_side_bar_menu_changed"]

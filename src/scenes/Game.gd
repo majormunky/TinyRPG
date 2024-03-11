@@ -3,6 +3,8 @@ extends Node2D
 
 @onready var world_manager = $WorldManager
 @onready var player = $Player
+@onready var ui = $UI
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

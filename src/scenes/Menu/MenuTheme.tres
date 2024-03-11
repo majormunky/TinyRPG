@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cf5rhasrgjan2"]
+
+[ext_resource type="FontFile" uid="uid://dxs3bhe6evm1b" path="res://assets/fonts/AtlantisInternational-jen0.ttf" id="1_al5bf"]
+
+[resource]
+default_font = ExtResource("1_al5bf")
+default_font_size = 48
