@@ -2,18 +2,13 @@ extends MarginContainer
 
 var menu_active = false
 var selected_menu = null
+var character_panel = preload("res://scenes/Menu/CharacterPanel.tscn")
 @onready var sidebar = $HBoxContainer/NinePatchRect/MarginContainer/SideBar
 @onready var main_section = $HBoxContainer/Main/MarginContainer
+@onready var character_panels = $HBoxContainer/Main/MarginContainer/Status/CharacterPanels
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	visible = false
 
 
 func toggle():
@@ -36,6 +31,15 @@ func render_main_panel():
 			child.visible = true
 		else:
 			child.visible = false
+	
+	for panel in character_panels.get_children():
+		panel.queue_free()
+	
+	for char_data in PlayerData.characters:
+		var new_panel = character_panel.instantiate()
+		character_panels.add_child(new_panel)
+		new_panel.set_character_data(char_data)
+
 
 
 func _on_side_bar_menu_changed(menu_name):

@@ -1,11 +1,22 @@
 extends CharacterBody2D
 
 var speed = 200
-
+var player_data = null
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 signal teleporter_hit(name)
+
+
+#func _ready():
+	#player_data = Character.new()
+	#player_data.character_name = "Zeno"
+	#player_data.job_name = "Warrior"
+	#player_data.max_hit_points = 100
+	#player_data.current_hit_points = 100
+	#player_data.strength = 40
+	#player_data.dexterity = 15
+	#player_data.intelligence = 10
 
 
 func _physics_process(delta):
