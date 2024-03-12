@@ -5,7 +5,7 @@ var player_data = null
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
-signal teleporter_hit(name)
+signal teleporter_hit(area)
 
 
 #func _ready():
@@ -44,4 +44,4 @@ func _physics_process(delta):
 
 func _on_body_box_area_entered(area):
 	print("Teleporter Hit ", area.name)
-	emit_signal("teleporter_hit", area.name)
+	emit_signal("teleporter_hit", area)

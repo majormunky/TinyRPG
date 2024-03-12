@@ -1,13 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceevtp68xc1n"]
+[gd_scene load_steps=4 format=3 uid="uid://ceevtp68xc1n"]
 
 [ext_resource type="Script" path="res://scenes/Map.gd" id="1_2ets3"]
 [ext_resource type="TileSet" uid="uid://csgvfkg6nnuka" path="res://resources/MainTileMap.tres" id="2_vn5rg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8e6bo"]
-size = Vector2(26, 27)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1mhg"]
-size = Vector2(82, 87)
+[ext_resource type="PackedScene" uid="uid://bs52b7huns7o7" path="res://scenes/Maps/Teleporter.tscn" id="3_ws207"]
 
 [node name="WorldMap" type="Node2D"]
 script = ExtResource("1_2ets3")
@@ -23,23 +18,13 @@ layer_1/tile_data = PackedInt32Array(2162763, 2, 0, 2162774, 2, 4, 2228310, 2, 5
 
 [node name="Teleporters" type="Node2D" parent="."]
 
-[node name="House1" type="Area2D" parent="Teleporters"]
-position = Vector2(3599, 1616)
-collision_layer = 256
-collision_mask = 256
+[node name="House1" parent="Teleporters" instance=ExtResource("3_ws207")]
+position = Vector2(3625, 1617)
+level_to_load = "res://scenes/Maps/House1.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporters/House1"]
-position = Vector2(24, 1.5)
-shape = SubResource("RectangleShape2D_8e6bo")
-
-[node name="FirstTown" type="Area2D" parent="Teleporters"]
-position = Vector2(4140, 1604)
-collision_layer = 256
-collision_mask = 256
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporters/FirstTown"]
-position = Vector2(32, 28.5)
-shape = SubResource("RectangleShape2D_q1mhg")
+[node name="FirstTown" parent="Teleporters" instance=ExtResource("3_ws207")]
+position = Vector2(4172, 1663)
+level_to_load = "res://scenes/Maps/FirstTown.tscn"
 
 [node name="Positions" type="Node2D" parent="."]
 
@@ -47,7 +32,7 @@ shape = SubResource("RectangleShape2D_q1mhg")
 position = Vector2(3621, 1681)
 
 [node name="GameStart" type="Marker2D" parent="Positions"]
-position = Vector2(2449, 1447)
+position = Vector2(3653, 1787)
 
 [node name="FromFirstTown" type="Marker2D" parent="Positions"]
 position = Vector2(4171, 1720)

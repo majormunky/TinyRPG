@@ -4,11 +4,15 @@ extends Node2D
 @onready var world_manager = $WorldManager
 @onready var player = $Player
 @onready var ui = $UI
+@onready var teleporter = preload("res://scenes/Maps/Teleporter.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	world_manager.load_map("WorldMap")
+	var starting_map = teleporter.instantiate()
+	starting_map.level_to_load = "res://scenes/Maps/WorldMap.tscn"
+	starting_map.name = "WorldMap"
+	world_manager.load_map(starting_map)
 	set_player_position()
 
 
@@ -24,9 +28,9 @@ func _process(_delta):
 	pass
 
 
-func _on_player_teleporter_hit(area_name):
-	print("In Game, Teleporter Hit: ", area_name)
-	world_manager.load_map(area_name)
+func _on_player_teleporter_hit(area):
+	print("In Game, Teleporter Hit: ", area.name)
+	world_manager.load_map(area)
 
 
 func _on_world_manager_map_loaded(map_name):

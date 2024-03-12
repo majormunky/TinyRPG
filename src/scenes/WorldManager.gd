@@ -1,12 +1,6 @@
 extends Node2D
 
 signal map_loaded(map_name)
-
-var map_data = {
-	"House1": preload("res://scenes/Maps/House1.tscn"),
-	"WorldMap": preload("res://scenes/Maps/WorldMap.tscn"),
-	"FirstTown": preload("res://scenes/Maps/FirstTown.tscn")
-}
 var current_map = null
 var previous_map_name = null
 
@@ -33,16 +27,22 @@ func clear_map():
 		current_map = null
 
 
-func load_map(map_name):
+func load_map(teleporter):
 	if current_map:
 		previous_map_name = current_map.name
+		print("Previous Map Name: " + previous_map_name)
+	else:
+		print("Current map not set, not setting previous map name")
 	
 	# unload old map
 	clear_map()
 	
 	# load in new map
-	var map = map_data[map_name].instantiate()
+	var map_path = teleporter.level_to_load
+	var map_scene = load(map_path)
+	var map = map_scene.instantiate()
+	
 	call_deferred("add_child", map)
 	current_map = map
 	
-	emit_signal("map_loaded", map_name)
+	emit_signal("map_loaded", teleporter.name)
