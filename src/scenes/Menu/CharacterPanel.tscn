@@ -5,6 +5,12 @@
 [ext_resource type="Theme" uid="uid://cf5rhasrgjan2" path="res://scenes/Menu/MenuTheme.tres" id="1_pirt2"]
 
 [node name="CharacterPanel" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -562.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_pirt2")
 script = ExtResource("1_p4lja")
 
@@ -15,15 +21,27 @@ stretch_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = -16
 
-[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Zeno"
+
+[node name="Job" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Warrior"
+horizontal_alignment = 2
 
 [node name="Level" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

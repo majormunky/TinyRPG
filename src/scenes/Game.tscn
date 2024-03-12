@@ -106,6 +106,7 @@ text = "Status"
 
 [node name="CharacterPanels" type="VBoxContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer/Status"]
 layout_mode = 2
+theme_override_constants/separation = -8
 
 [node name="Inventory" type="VBoxContainer" parent="UI/GameMenu/HBoxContainer/Main/MarginContainer"]
 visible = false
