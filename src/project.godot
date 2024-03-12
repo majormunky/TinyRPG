@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="TinyRPG"
-run/main_scene="res://scenes/Game.tscn"
+run/main_scene="res://scenes/IntroScreen.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 PlayerData="*res://resources/PlayerData.gd"
+SceneManager="*res://scenes/SceneManager.gd"
 
 [display]
 
