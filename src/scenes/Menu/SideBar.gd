@@ -8,8 +8,9 @@ signal menu_changed(menu_name)
 
 # Called when the node enters the scene tree for the first time.
 func activate():
-	for child in get_children():
-		menu_items.append(child.name)
+	if len(menu_items) == 0:
+		for child in get_children():
+			menu_items.append(child.name)
 
 	selected_index = 0
 	render_menu()

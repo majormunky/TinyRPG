@@ -22,8 +22,12 @@ PlayerData="*res://resources/PlayerData.gd"
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=800
+window/size/viewport_height=720
 window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
+window/dpi/allow_hidpi=false
 
 [input]
 

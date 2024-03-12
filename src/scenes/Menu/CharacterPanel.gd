@@ -1,11 +1,15 @@
 extends HBoxContainer
 
 var character_data: Character
+var portraits = {
+	"Warrior": preload("res://assets/characters/warrior.png")
+}
+
 @onready var character_name = $MarginContainer/VBoxContainer/Name
 @onready var character_level = $MarginContainer/VBoxContainer/Level
 @onready var character_hp = $MarginContainer/VBoxContainer/HP
 @onready var character_mp = $MarginContainer/VBoxContainer/MP
-
+@onready var portrait = $Portrait
 
 func _ready():
 	pass # Replace with function body.
@@ -21,8 +25,9 @@ func render_panel():
 	character_level.text = "Level: " + str(character_data.level)
 	character_hp.text = "HP: " + str(character_data.current_hit_points) + "/" + str(character_data.max_hit_points)
 	character_mp.text = "MP: " + str(character_data.current_magic_points) + "/" + str(character_data.max_magic_points)
+	portrait.texture = portraits["Warrior"]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
