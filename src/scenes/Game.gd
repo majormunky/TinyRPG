@@ -30,7 +30,7 @@ func _process(_delta):
 
 func _on_player_teleporter_hit(area):
 	print("In Game, Teleporter Hit: ", area.name)
-	world_manager.load_map(area)
+	world_manager.load_map(area, false)
 
 
 func _on_world_manager_map_loaded(map_name):

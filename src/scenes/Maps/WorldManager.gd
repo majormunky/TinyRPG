@@ -3,10 +3,8 @@ extends Node2D
 signal map_loaded(map_name)
 var current_map = null
 var previous_map_name = null
-
-
-func _ready():
-	pass # Replace with function body.
+var _loading_screen: LoadingScreen
+var _loading_screen_scene: PackedScene = preload("res://scenes/LoadingScreen.tscn")
 
 
 func get_player_start_position():
@@ -27,7 +25,16 @@ func clear_map():
 		current_map = null
 
 
-func load_map(teleporter):
+func load_map(teleporter, skip_transition: bool = true):
+	var transition_type = "fade_to_black"
+	var map_to_load = teleporter.name
+	
+	if not skip_transition:
+		_loading_screen = _loading_screen_scene.instantiate() as LoadingScreen
+		get_tree().root.add_child(_loading_screen)
+		_loading_screen.start_transition(transition_type)
+		await _loading_screen.transition_is_complete
+	
 	if current_map:
 		previous_map_name = current_map.name
 		print("Previous Map Name: " + previous_map_name)
@@ -45,4 +52,10 @@ func load_map(teleporter):
 	call_deferred("add_child", map)
 	current_map = map
 	
-	emit_signal("map_loaded", teleporter.name)
+	if not skip_transition:
+		await get_tree().create_timer(0.5).timeout
+		if _loading_screen != null:
+			print("It is, running finish_transition")
+			_loading_screen.finish_transition()
+	
+	emit_signal("map_loaded", map_to_load)
