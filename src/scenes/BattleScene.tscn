@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=3 uid="uid://bylx87amgeklo"]
+
+[ext_resource type="Texture2D" uid="uid://gt2u7og6yno1" path="res://assets/battle/bg_f_11.png" id="1_ac2r7"]
+[ext_resource type="Script" path="res://scenes/BattleScene.gd" id="1_euvpe"]
+[ext_resource type="Theme" uid="uid://cf5rhasrgjan2" path="res://scenes/Menu/MenuTheme.tres" id="1_nbax2"]
+[ext_resource type="Texture2D" uid="uid://bnx4x8q8swyv6" path="res://assets/ui/panel.png" id="2_ygdlm"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_euvpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 260)
+texture = ExtResource("1_ac2r7")
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1280, 520)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_nbax2")
+
+[node name="MonsterListContainer" type="NinePatchRect" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_nbax2")
+texture = ExtResource("2_ygdlm")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/MonsterListContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/MonsterListContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="MonsterInfo" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/MonsterListContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 136
+
+[node name="Name" type="Label" parent="CanvasLayer/HBoxContainer/MonsterListContainer/MarginContainer/VBoxContainer/MonsterInfo"]
+layout_mode = 2
+text = "Rat"
+
+[node name="Amount" type="Label" parent="CanvasLayer/HBoxContainer/MonsterListContainer/MarginContainer/VBoxContainer/MonsterInfo"]
+layout_mode = 2
+text = "2"
+
+[node name="ActionContainer" type="NinePatchRect" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_nbax2")
+texture = ExtResource("2_ygdlm")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/ActionContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/ActionContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PlayerListContainer" type="NinePatchRect" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("1_nbax2")
+texture = ExtResource("2_ygdlm")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/PlayerListContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/PlayerListContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="PlayerInfo" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/PlayerListContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 505
+
+[node name="Name" type="Label" parent="CanvasLayer/HBoxContainer/PlayerListContainer/MarginContainer/VBoxContainer/PlayerInfo"]
+layout_mode = 2
+text = "Name"
+
+[node name="Health" type="Label" parent="CanvasLayer/HBoxContainer/PlayerListContainer/MarginContainer/VBoxContainer/PlayerInfo"]
+layout_mode = 2
+text = "100/100"
+horizontal_alignment = 2
