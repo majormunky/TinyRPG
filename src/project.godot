@@ -58,6 +58,11 @@ menu_toggle={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_5="MonsterTest"
+2d_physics/layer_9="Teleporters"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

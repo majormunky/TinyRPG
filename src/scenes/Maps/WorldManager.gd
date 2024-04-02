@@ -59,3 +59,14 @@ func load_map(teleporter, skip_transition: bool = true):
 			_loading_screen.finish_transition()
 	
 	emit_signal("map_loaded", map_to_load)
+
+
+func get_tile_at_position(pos):
+	var tilemap = current_map.get_node("TileMap")
+	var cell_position = tilemap.local_to_map(tilemap.to_local(pos))
+	var data = tilemap.get_cell_tile_data(0, cell_position)
+	if data:
+		var tile_type = data.get_custom_data("tile_type")
+		return tile_type
+	else:
+		return null

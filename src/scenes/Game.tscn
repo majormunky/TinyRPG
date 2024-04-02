@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1xd48a210722"]
+[gd_scene load_steps=10 format=3 uid="uid://b1xd48a210722"]
 
 [ext_resource type="Script" path="res://scenes/Game.gd" id="1_qf4lp"]
 [ext_resource type="PackedScene" uid="uid://harceuo4vu7x" path="res://scenes/Player.tscn" id="1_xy0tq"]
+[ext_resource type="PackedScene" uid="uid://bylx87amgeklo" path="res://scenes/BattleScene.tscn" id="2_6vlvh"]
 [ext_resource type="Script" path="res://scenes/Maps/WorldManager.gd" id="2_gmgsm"]
 [ext_resource type="Script" path="res://scenes/Menu/UI.gd" id="4_yhcvy"]
 [ext_resource type="Script" path="res://scenes/Menu/SideBar.gd" id="5_20pyn"]
@@ -10,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://cf5rhasrgjan2" path="res://scenes/Menu/MenuTheme.tres" id="5_l7x7j"]
 
 [node name="Game" type="Node2D"]
+z_as_relative = false
 script = ExtResource("1_qf4lp")
 
 [node name="WorldManager" type="Node2D" parent="."]
@@ -124,6 +126,12 @@ layout_mode = 2
 layout_mode = 2
 text = "Magic"
 
+[node name="BattleSceneManager" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BattleScene" parent="BattleSceneManager" instance=ExtResource("2_6vlvh")]
+
 [connection signal="map_loaded" from="WorldManager" to="." method="_on_world_manager_map_loaded"]
+[connection signal="monster_hit" from="Player" to="." method="_on_player_monster_hit"]
 [connection signal="teleporter_hit" from="Player" to="." method="_on_player_teleporter_hit"]
 [connection signal="menu_changed" from="UI/GameMenu/HBoxContainer/NinePatchRect/MarginContainer/SideBar" to="UI/GameMenu" method="_on_side_bar_menu_changed"]
