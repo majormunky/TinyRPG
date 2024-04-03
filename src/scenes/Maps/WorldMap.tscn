@@ -32,7 +32,7 @@ level_to_load = "res://scenes/Maps/FirstTown.tscn"
 position = Vector2(3621, 1681)
 
 [node name="GameStart" type="Marker2D" parent="Positions"]
-position = Vector2(3653, 1787)
+position = Vector2(2865, 1778)
 
 [node name="FromFirstTown" type="Marker2D" parent="Positions"]
 position = Vector2(4171, 1720)

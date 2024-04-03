@@ -1,13 +1,23 @@
 extends Node2D
 
 @onready var monster_container = $CanvasLayer/HBoxContainer/MonsterListContainer
-@onready var player_container = $CanvasLayer/HBoxContainer/PlayerListContainer
+@onready var player_container = $CanvasLayer/HBoxContainer/PlayerListContainer/MarginContainer/VBoxContainer
 @onready var background = $Sprite2D
 @onready var canvas_layer = $CanvasLayer
+@onready var CharacterInfoPanel = load("res://scenes/Menu/BattleScene/CharacterStatus.tscn")
 
 
 func update_player_container():
 	pass
+
+
+func update_character_panel():
+	print("Total Characters", len(PlayerData.characters))
+	
+	for character in PlayerData.characters:
+		var panel = CharacterInfoPanel.instantiate()
+		player_container.add_child(panel)
+		panel.setup(character)
 
 
 func setup(env_type):
@@ -24,3 +34,5 @@ func setup(env_type):
 	print(background.texture)
 	
 	canvas_layer.visible = true
+	
+	update_character_panel()

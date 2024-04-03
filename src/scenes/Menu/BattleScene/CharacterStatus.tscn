@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://c65swppylhpjg"]
+
+[ext_resource type="Script" path="res://scenes/Menu/BattleScene/CharacterStatus.gd" id="1_3fr6r"]
+
+[node name="PlayerInfo" type="HBoxContainer"]
+offset_right = 614.0
+offset_bottom = 23.0
+theme_override_constants/separation = 505
+script = ExtResource("1_3fr6r")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_stretch_ratio = 2.0
+text = "Name"
+
+[node name="Health" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 2.0
+text = "100/100"
+horizontal_alignment = 2
