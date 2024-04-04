@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var speed = 200
 var player_data = null
+var movement_enabled = true
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
@@ -21,6 +22,9 @@ signal monster_hit(area)
 
 
 func _physics_process(delta):
+	if movement_enabled == false:
+		return
+
 	var input = Vector2.ZERO
 	
 	input.x = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
@@ -44,11 +48,11 @@ func _physics_process(delta):
 
 
 func _on_body_box_area_entered(area):
-	print("Teleporter Hit ", area.name)
 	if area.name.contains("MonsterTest"):
-		print("Monster Hit!")
 		emit_signal("monster_hit",area)
+		movement_enabled = false
 	else:
 		emit_signal("teleporter_hit", area)
+		movement_enabled = false
 
 

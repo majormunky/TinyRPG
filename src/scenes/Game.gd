@@ -26,6 +26,7 @@ func set_player_position():
 	print("Setting player position at ", player_start)
 	player.position.x = player_start.x
 	player.position.y = player_start.y
+	player.movement_enabled = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
