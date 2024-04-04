@@ -5,9 +5,8 @@ extends Node2D
 @onready var player = $Player
 @onready var ui = $UI
 @onready var Teleporter = preload("res://scenes/Maps/Teleporter.tscn")
-# @onready var BattleScene = preload("res://scenes/BattleScene.tscn")
+@onready var BattleScene = preload("res://scenes/BattleScene.tscn")
 @onready var battle_scene_manager = $BattleSceneManager
-@onready var battle_scene = $BattleSceneManager/BattleScene
 @onready var _loading_screen_scene: PackedScene = preload("res://scenes/LoadingScreen.tscn")
 var _loading_screen: LoadingScreen
 
@@ -45,7 +44,6 @@ func _on_world_manager_map_loaded(map_name):
 
 
 func _on_player_monster_hit(area):
-
 	var shape = area.get_node("CollisionShape2D")
 	var tile_type = world_manager.get_tile_at_position(shape.global_position)
 	if tile_type == null:
@@ -67,8 +65,8 @@ func load_battle_scene(area_type):
 	# hide player
 	player.visible = false
 	
-	#var battle = BattleScene.instantiate()
-	#add_child(battle)
+	var battle_scene = BattleScene.instantiate()
+	battle_scene_manager.add_child(battle_scene)
 	battle_scene.setup(area_type)
 	battle_scene_manager.visible = true
 	# battle_scene.visible = true
