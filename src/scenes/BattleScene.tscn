@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bylx87amgeklo"]
+[gd_scene load_steps=7 format=3 uid="uid://bylx87amgeklo"]
 
 [ext_resource type="Texture2D" uid="uid://gt2u7og6yno1" path="res://assets/battle/bg_f_11.png" id="1_ac2r7"]
 [ext_resource type="Script" path="res://scenes/BattleScene.gd" id="1_euvpe"]
 [ext_resource type="Theme" uid="uid://cf5rhasrgjan2" path="res://scenes/Menu/MenuTheme.tres" id="1_nbax2"]
 [ext_resource type="Texture2D" uid="uid://bnx4x8q8swyv6" path="res://assets/ui/panel.png" id="2_ygdlm"]
+[ext_resource type="Texture2D" uid="uid://2uh0xetaxdbq" path="res://assets/enemies/Bat_1.png" id="3_aqjnf"]
 [ext_resource type="PackedScene" uid="uid://c65swppylhpjg" path="res://scenes/Menu/BattleScene/CharacterStatus.tscn" id="5_jsd2x"]
 
 [node name="BattleScene" type="Node2D"]
@@ -14,6 +15,24 @@ position = Vector2(640, 260)
 texture = ExtResource("1_ac2r7")
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 1280, 520)
+
+[node name="4_Monsters" type="Node2D" parent="Sprite2D"]
+
+[node name="Slot1" type="Sprite2D" parent="Sprite2D/4_Monsters"]
+position = Vector2(-524, -146)
+texture = ExtResource("3_aqjnf")
+
+[node name="Slot2" type="Sprite2D" parent="Sprite2D/4_Monsters"]
+position = Vector2(-488, 105)
+texture = ExtResource("3_aqjnf")
+
+[node name="Slot3" type="Sprite2D" parent="Sprite2D/4_Monsters"]
+position = Vector2(-305, -124)
+texture = ExtResource("3_aqjnf")
+
+[node name="Slot4" type="Sprite2D" parent="Sprite2D/4_Monsters"]
+position = Vector2(-302, 102)
+texture = ExtResource("3_aqjnf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

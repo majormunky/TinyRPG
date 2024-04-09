@@ -7,13 +7,18 @@ extends Node2D
 @onready var CharacterInfoPanel = load("res://scenes/Menu/BattleScene/CharacterStatus.tscn")
 
 
-func update_player_container():
+func _ready():
+	# setup("sand")
 	pass
 
 
+func clear_player_list():
+	for child in player_container.get_children():
+		child.queue_free()
+
+
 func update_character_panel():
-	print("Total Characters", len(PlayerData.characters))
-	
+	clear_player_list()
 	for character in PlayerData.characters:
 		var panel = CharacterInfoPanel.instantiate()
 		player_container.add_child(panel)
@@ -21,18 +26,12 @@ func update_character_panel():
 
 
 func setup(env_type):
-	print("Env Type: " + env_type)
 	var backgrounds = {
 		"sand": load("res://assets/battle/bg_sand.png"),
 		"grass": load("res://assets/battle/bg_f_11.png")
 	}
-	#var bg_image = ImageTexture.create_from_image(backgrounds[env_type])
 	var bg_image = backgrounds[env_type]
-	#print(bg_image)
-	print(background.texture)
 	background.texture = bg_image
-	print(background.texture)
-	
 	canvas_layer.visible = true
 	
 	update_character_panel()
