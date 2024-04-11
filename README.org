@@ -1,0 +1,15 @@
+* TinyRPG
+
+** Things to do
+*** Battle Scene
+**** Configure how enemies are layed out
+**** Draw player characters
+**** Build menu for battle actions
+**** Setup order of attackers
+**** Setup animations of attacking
+**** Figure out how to calculate damage
+
+
+** Fighting Damage
+Monster will have some stats that determine damage amount
+Player will have a defense stat that will determine how much damage gets blocked
